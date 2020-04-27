@@ -1,0 +1,15 @@
+CREATE TABLE "bearsbaseball"."events" 
+( "EventNumber" INT NOT NULL 
+, "AnnouncementNumber" INT NULL DEFAULT NULL 
+, "Email" VARCHAR NULL DEFAULT NULL 
+, "SessionID" VARCHAR(9) NULL DEFAULT NULL 
+, "SeasonName" VARCHAR NULL DEFAULT NULL 
+, "GameNumber" INT NULL DEFAULT NULL 
+, "Type" VARCHAR NULL DEFAULT NULL 
+, "Date" DATE NOT NULL 
+, "Time" TIME NOT NULL 
+, "Location" TEXT NOT NULL 
+, "Opponent" VARCHAR NULL DEFAULT NULL 
+, "Score" VARCHAR NULL DEFAULT NULL 
+, "Outcome" VARCHAR NULL DEFAULT NULL 
+, PRIMARY KEY ("EventNumber")) ENGINE = InnoDB; 
