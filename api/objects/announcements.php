@@ -24,7 +24,7 @@ function read(){
     $query = "SELECT a.AnnouncementNumber, a.Email, a.SessionID, a.EventNumber, a.Date, a.Body
             FROM " . $this->table_name . " AS a
             ORDER BY
-                a.Date ASC";
+                a.Date DESC";
   
     // prepare query statement
     $stmt = $this->conn->prepare($query);
