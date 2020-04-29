@@ -27,12 +27,12 @@ class Event{
 function read(){
   
     // select all query
-    $query = "SELECT e.EventNumber, e.AnnouncementNumber, e.Email, e.SessionID
-                    , e.GameNumber, e.Type, e.Date, a.Time, e.Location
-                    , e.Opponent, e.Score, e.Outcome
-            FROM " . $this->table_name . " AS e
+    $query = "SELECT a.EventNumber, a.AnnouncementNumber, a.Email, a.SessionID
+                    , a.GameNumber, a.Type, a.Date, a.Time, a.Location
+                    , a.Opponent, a.Score, a.Outcome
+            FROM " . $this->table_name . " AS a
             ORDER BY
-                e.Date ASC";
+                a.Date ASC";
   
     // prepare query statement
     $stmt = $this->conn->prepare($query);

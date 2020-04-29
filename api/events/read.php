@@ -7,15 +7,15 @@ header("Content-Type: application/json; charset=UTF-8");
 include_once '../config/database.php';
 include_once '../objects/events.php';
   
-// instantiate database and product object
+// instantiate database and event object
 $database = new Database();
 $db = $database->getConnection();
   
 // initialize object
 $Event = new Event($db);
   
-// read products will be here
-// query products
+// read events will be here
+// query events
 $stmt = $Event->read();
 $num = $stmt->rowCount();
   
