@@ -1,17 +1,23 @@
 <?php
-class Announcement{
+class Event{
   
     // database connection and table name
     private $conn;
-    private $table_name = "announcements";
+    private $table_name = "events";
     
     // object properties
+    public $EventNumber;
     public $AnnouncementNumber;
     public $Email;
     public $SessionID;
-    public $EventNumber;
+    public $GameNumber;
+    public $Type;
     public $Date;
-    public $Body;
+    public $Time;
+    public $Location;
+    public $Opponent;
+    public $Score;
+    public $Outcome;
   
     // constructor with $db as database connection
     public function __construct($db){
@@ -21,10 +27,12 @@ class Announcement{
 function read(){
   
     // select all query
-    $query = "SELECT a.AnnouncementNumber, a.Email, a.SessionID, a.EventNumber, a.Date, a.Body
-            FROM " . $this->table_name . " AS a
+    $query = "SELECT e.EventNumber, e.AnnouncementNumber, e.Email, e.SessionID
+                    , e.GameNumber, e.Type, e.Date, a.Time, e.Location
+                    , e.Opponent, e.Score, e.Outcome
+            FROM " . $this->table_name . " AS e
             ORDER BY
-                a.Date ASC";
+                e.Date ASC";
   
     // prepare query statement
     $stmt = $this->conn->prepare($query);
