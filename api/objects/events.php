@@ -137,5 +137,28 @@ function update(){
     return false;
 }
 
+// delete the product
+function delete(){
+  
+    // delete query
+    $query = "DELETE FROM " . $this->table_name . " WHERE EventNumber = ?";
+  
+    // prepare query
+    $stmt = $this->conn->prepare($query);
+  
+    // sanitize
+    $this->EventNumber=htmlspecialchars(strip_tags($this->EventNumber));
+  
+    // bind EventNumber of record to delete
+    $stmt->bindParam(1, $this->EventNumber);
+  
+    // execute query
+    if($stmt->execute()){
+        return true;
+    }
+  
+    return false;
+}
+
 }
 ?>
