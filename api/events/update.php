@@ -6,23 +6,25 @@ header("Access-Control-Allow-Methods: POST");
 header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
   
-// include database and object files
+// get database connection
 include_once '../config/database.php';
+  
+// instantiate event object
 include_once '../objects/events.php';
   
-// get database connection
 $database = new Database();
 $db = $database->getConnection();
   
-// prepare event object
 $event = new Event($db);
   
-// get id of event to be edited
+// get posted data
 $data = json_decode(file_get_contents("php://input"));
   
 // set ID property of event to be edited
-$event->EventNumber = $data->EventNumber;
-  
+if(
+$event->EventNumber = $data->EventNumber
+)
+{ 
 // set event property values
 $event->Type = $data->Type;
 $event->Date = $data->Date;
@@ -50,5 +52,13 @@ else{
   
     // tell the user
     echo json_encode(array("message" => "Unable to update event."));
+}
+}
+else{
+    // set response code - 400 bad request
+    http_response_code(400);
+  
+    // tell the user
+    echo json_encode(array("message" => "Unable to update event. Data is incomplete."));
 }
 ?>

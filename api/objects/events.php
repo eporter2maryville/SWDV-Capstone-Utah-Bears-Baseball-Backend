@@ -94,21 +94,23 @@ function update(){
     $query = "UPDATE
                 " . $this->table_name . "
             SET
-                EventNumber=:EventNumber
-                ,Type=:Type
+                Type=:Type
                 , Date=:Date
                 , Time=:Time
                 , Location=:Location
                 , Opponent=:Opponent
                 , Score=:Score
                 , Outcome=:Outcome
+
             WHERE
-                EventNumber=:EventNumber";
+                EventNumber=:EventNumber
+                ";
   
     // prepare query statement
     $stmt = $this->conn->prepare($query);
   
     // sanitize
+    $this->EventNumber=htmlspecialchars(strip_tags($this->EventNumber));
     $this->Type=htmlspecialchars(strip_tags($this->Type));
     $this->Date=htmlspecialchars(strip_tags($this->Date));
     $this->Time=htmlspecialchars(strip_tags($this->Time));
@@ -116,9 +118,9 @@ function update(){
     $this->Opponent=htmlspecialchars(strip_tags($this->Opponent));
     $this->Score=htmlspecialchars(strip_tags($this->Score));
     $this->Outcome=htmlspecialchars(strip_tags($this->Outcome));
-    $this->EventNumber=htmlspecialchars(strip_tags($this->EventNumber));
-  
+     
     // bind new values
+    $stmt->bindParam(":EventNumber", $this->EventNumber);
     $stmt->bindParam(":Type", $this->Type);
     $stmt->bindParam(":Date", $this->Date);
     $stmt->bindParam(":Time", $this->Time);
@@ -126,7 +128,6 @@ function update(){
     $stmt->bindParam(":Opponent", $this->Opponent);
     $stmt->bindParam(':Score', $this->Score);
     $stmt->bindParam(':Outcome', $this->Outcome);
-    $stmt->bindParam(':EventNumber', $this->EventNumber);
   
     // execute the query
     if($stmt->execute()){
