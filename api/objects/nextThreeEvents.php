@@ -7,9 +7,6 @@ class Event{
     
     // object properties
     public $EventNumber;
-    public $AnnouncementNumber;
-    public $Email;
-    public $SessionID;
     public $GameNumber;
     public $Type;
     public $Date;

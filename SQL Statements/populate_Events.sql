@@ -24,3 +24,4 @@ INSERT INTO "events" (
     ('9', NULL, NULL, NULL, 'Summer 2020', '8', NULL, '2020-07-19', '13:30:00', 'Oquirrh South', 'Outlaws', NULL, NULL), 
     ('10', NULL, NULL, NULL, 'Summer 2020', '9', 'Game', '2020-08-02', '13:30:00', 'Oquirrh South', 'Outlaws', NULL, NULL), 
     ('11', NULL, NULL, NULL, NULL, NULL, 'Team Outing', '2020-08-09', '12:00:00', 'TBD - Pending Economic Opening', NULL, NULL, NULL)
+

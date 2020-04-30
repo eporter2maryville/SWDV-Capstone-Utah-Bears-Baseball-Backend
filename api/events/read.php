@@ -35,9 +35,6 @@ if($num>0){
   
         $event_item=array(
             "EventNumber"=> $EventNumber,
-            "AnnouncementNumber" => $AnnouncementNumber,
-            "Email" => $Email,
-            "SessionID" => $SessionID,
             "GameNumber" => $GameNumber,
             "Type" => $Type,
             "Date" => $Date,
