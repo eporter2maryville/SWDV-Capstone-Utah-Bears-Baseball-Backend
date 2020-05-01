@@ -23,18 +23,17 @@ $event->EventNumber = isset($_GET['EventNumber']) ? $_GET['EventNumber'] : die()
 // read the details of event to be edited
 $event->readOne();
   
-if($event->name!=null){
+if($event->Type!=null){
     // create array
     $event_arr = array(
         "EventNumber" =>  $event->EventNumber,
-        "GameNumber" => $GameNumber,
-        "Type" => $Type,
-        "Date" => $Date,
-        "Time" => $Time,
-        "Location" => $Location,
-        "Opponent" => $Opponent,
-        "Score" => $Score,
-        "Outcome" => $Outcome
+        "Type" => $event->Type,
+        "Date" => $event->Date,
+        "Time" => $event->Time,
+        "Location" => $event->Location,
+        "Opponent" => $event->Opponent,
+        "Score" => $event->Score,
+        "Outcome" => $event->Outcome
   
     );
   

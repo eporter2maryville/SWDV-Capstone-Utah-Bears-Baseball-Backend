@@ -137,7 +137,7 @@ function update(){
     return false;
 }
 
-// delete the product
+// delete the event
 function delete(){
   
     // delete query
@@ -160,12 +160,11 @@ function delete(){
     return false;
 }
 
-// used when filling up the update product form
+// used when filling up the update event form
 function readOne(){
   
     // query to read single record
     $query = "SELECT a.EventNumber
-                    , a.GameNumber
                     , a.Type
                     , a.Date
                     , a.Time
@@ -182,7 +181,7 @@ function readOne(){
     // prepare query statement
     $stmt = $this->conn->prepare( $query );
   
-    // bind EventNumber of product to be updated
+    // bind EventNumber of event to be updated
     $stmt->bindParam(1, $this->EventNumber);
   
     // execute query
@@ -197,7 +196,8 @@ function readOne(){
     $this->Time = $row['Time'];
     $this->Location = $row['Location'];
     $this->Opponent = $row['Opponent'];
-    $this->Score = $row['Outcome'];
+    $this->Score = $row['Score'];
+    $this->Outcome = $row['Outcome'];
 }
 
 }
