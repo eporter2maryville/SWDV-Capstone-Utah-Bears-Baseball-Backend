@@ -160,5 +160,45 @@ function delete(){
     return false;
 }
 
+// used when filling up the update product form
+function readOne(){
+  
+    // query to read single record
+    $query = "SELECT a.EventNumber
+                    , a.GameNumber
+                    , a.Type
+                    , a.Date
+                    , a.Time
+                    , a.Location
+                    , a.Opponent
+                    , a.Score
+                    , a.Outcome
+            FROM " . $this->table_name . " AS a
+            WHERE
+                a.EventNumber = ?
+            LIMIT
+                0,1";
+  
+    // prepare query statement
+    $stmt = $this->conn->prepare( $query );
+  
+    // bind EventNumber of product to be updated
+    $stmt->bindParam(1, $this->EventNumber);
+  
+    // execute query
+    $stmt->execute();
+  
+    // get retrieved row
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+  
+    // set values to object properties
+    $this->Type = $row['Type'];
+    $this->Date = $row['Date'];
+    $this->Time = $row['Time'];
+    $this->Location = $row['Location'];
+    $this->Opponent = $row['Opponent'];
+    $this->Score = $row['Outcome'];
+}
+
 }
 ?>
